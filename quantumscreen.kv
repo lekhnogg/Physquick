@@ -1,0 +1,77 @@
+<QuantumScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#69B3F2")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            font_color:
+                utils.get_color_from_hex("#424FFF")
+            font_size: 30
+            font_name: "Rubik-Bold.ttf"
+            text: "Quantum Mechanics"
+            size_hint: 1, .1
+            pos_hint: {"top": 1, "left": 1}
+        ScrollView:
+            pos_hint: {"top": .9, "left": 1}
+            size_hint: 1, .7
+            GridLayout:
+                cols:1
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '50dp'
+                row_force_default: True
+                Button:
+                    text: "Quantum Tunneling"
+                    font_name: "Rubik-Regular.ttf"
+                    on_release:
+                        app.change_screen("length_contraction_screen", direction='right', mode='push')
+                Button:
+                    text: "Rydberg's Equation"
+                    font_name: "Rubik-Regular.ttf"
+                    on_release:
+                        app.change_screen("length_contraction_screen", direction='right', mode='push')
+                Button:
+                    text: "Quantum Tunneling"
+                    font_name: "Rubik-Regular.ttf"
+                    on_release:
+                        app.change_screen("length_contraction_screen", direction='right', mode='push')
+                Button:
+                    text: "Quantum Tunneling"
+                    font_name: "Rubik-Regular.ttf"
+                    on_release:
+                        app.change_screen("length_contraction_screen", direction='right', mode='push')
+                Button:
+                    text: "Quantum Tunneling"
+                    font_name: "Rubik-Regular.ttf"
+                    on_release:
+                        app.change_screen("length_contraction_screen", direction='right', mode='push')
+                Button:
+                    text: "Quantum Tunneling"
+                    font_name: "Rubik-Regular.ttf"
+                    on_release:
+                        app.change_screen("length_contraction_screen", direction='right', mode='push')
+                Button:
+                    text: "Quantum Tunneling"
+                    font_name: "Rubik-Regular.ttf"
+                    on_release:
+                        app.change_screen("length_contraction_screen", direction='right', mode='push')
+
+
+
+
+        Button:
+            font_name: "Rubik-Bold.ttf"
+            color: 0,0,0,1
+            pos: self.pos
+            size_hint: 1, .1
+            text: "[u]Back[/u]"
+            markup: True
+            pos_hint: {"top": .1, "right": 1}
+            font_size: 20
+
+            on_release:
+                app.change_screen("relativity_screen", direction='left', mode='pop')

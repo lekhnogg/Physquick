@@ -1,0 +1,39 @@
+<VelocityAdditionScreen>:
+    id: velocityadd
+    orientation: 'vertical'
+    uPx: user_upx
+    vE: user_ve
+    uE: user_ux
+
+    FloatLayout:
+        Label:
+            id: value_tocalc
+            font_size: 40
+            text: "Enter values"
+            size_hint: 1, .1
+            pos_hint: {"top": 1, "left": 1}
+
+        TextInput:
+            id: user_upx
+            size_hint: .3, .06
+            pos_hint: {"top": .9, "right": .95}
+            multiline : False
+
+        TextInput:
+            id: user_ve
+            size_hint: .3, .06
+            pos_hint: {"top": .7, "right": .95}
+            multiline : False
+
+        TextInput:
+            id: user_ux
+            size_hint: .3, .06
+            pos_hint: {"top": .5, "right": .95}
+            multiline : False
+
+        Button:
+            text:
+                "Evaluate"
+            pos_hint: {"top": .3, "right": .95}
+            on_release:
+                velocityadd.get_velocity(int(user_upx.text), int(user_ve.text))

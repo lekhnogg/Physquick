@@ -1,0 +1,2 @@
+class QuantumScreen(Screen):
+    pass

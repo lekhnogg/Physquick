@@ -1,0 +1,192 @@
+<ItemDrawer>:
+    theme_text_color: "Custom"
+    on_release: self.parent.set_color_item(self)
+
+
+
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+    AnchorLayout:
+        anchor_x: "left"
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "56dp", "56dp"
+            source: "data/logo/kivy-icon-256.png"
+
+    MDLabel:
+        text: "Physquick options"
+        font_style: "Button"
+        size_hint_y: None
+        halign: 'center'
+        height: self.texture_size[1]
+
+    MDLabel:
+        text: "by Gleb"
+        font_style: "Caption"
+        size_hint_y: None
+        halign: 'center'
+        height: self.texture_size[1]
+
+    ScrollView:
+
+        DrawerList:
+            id: md_list
+
+            OneLineIconListItem:
+                text: 'Home'
+                on_release:
+                    root.nav_drawer.set_state("close")
+                    print(root.screen_manager.ids)
+                    root.screen_manager.current = "home_screen"
+
+                IconLeftWidget:
+                    icon: 'home'
+
+            OneLineIconListItem:
+                text: 'Settings'
+                on_release:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "settings_screen"
+                IconLeftWidget:
+                    icon: 'account-cog'
+
+            OneLineIconListItem:
+                text: 'Account'
+                on_release:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "account_screen"
+                IconLeftWidget:
+                    icon: 'account'
+
+            OneLineIconListItem:
+                text: 'Share'
+                on_release:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "share_screen"
+                IconLeftWidget:
+                    icon: 'share'
+
+            OneLineIconListItem:
+                text: 'Info'
+                on_release:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "info_screen"
+                IconLeftWidget:
+                    icon: 'information'
+
+
+
+
+Screen:
+
+    GridLayout:
+        orientation: 'vertical'
+        cols: 1
+        MDToolbar:
+            title: "Menu"
+            elevation: 10
+            left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+
+        NavigationLayout:
+
+
+            ScreenManager:
+                id:screen_manager
+                name: 'screen_manager'
+
+                HomeScreen:
+                    id: home_screen
+                    name: 'home_screen'
+
+                    MDTabs:
+                        id:android_tabs
+                        on_tab_switch: app.on_tab_switch(*args)
+
+                        Tab:
+                            text: 'Kinematics'
+                            id:kinematics_screen
+
+                            BoxLayout:
+
+                                orientation: "vertical"
+                                spacing: "10dp"
+
+                                ScrollView:
+
+
+                                    MDList:
+                                        OneLineAvatarIconListItem:
+                                            text: "Acceleration"
+                                            ImageLeftWidget:
+                                                source: "Icons/baggage.png"
+
+                                        OneLineAvatarIconListItem:
+                                            text: "Acceleration"
+                                            ImageLeftWidget:
+                                                source: "Icons/baggage.png"
+                                        OneLineAvatarIconListItem:
+                                            text: "Acceleration"
+                                            ImageLeftWidget:
+                                                source: "Icons/baggage.png"
+                                        OneLineAvatarIconListItem:
+                                            text: "Acceleration"
+                                            ImageLeftWidget:
+                                                source: "Icons/baggage.png"
+                                        OneLineAvatarIconListItem:
+                                            text: "Acceleration"
+                                            ImageLeftWidget:
+                                                source: "Icons/baggage.png"
+
+
+
+                        Tab:
+                            text: 'Relativity'
+                            id:relativity_screen
+                            FloatLayout:
+                                Button:
+                                    text:'rel'
+                        Tab:
+                            text: 'Quantum'
+                            id:quantum_screen
+                            FloatLayout:
+                                Button:
+                                    text:'qua'
+
+                        Tab:
+                            text: 'Energy'
+                            id:energy_screen
+                            FloatLayout:
+                                Button:
+                                    text:'ene'
+
+                SettingsScreen:
+                    id: settings_screen
+                    name: 'settings_screen'
+
+                AccountScreen:
+                    id: account_screen
+                    name: 'account_screen'
+
+                ShareScreen:
+                    id: share_screen
+                    name: 'share_screen'
+
+                InfoScreen:
+                    id: info_screen
+                    name: 'info_screen'
+
+            MDNavigationDrawer:
+                id: nav_drawer
+
+                ContentNavigationDrawer:
+                    id: content_drawer
+                    screen_manager: screen_manager
+                    nav_drawer: nav_drawer

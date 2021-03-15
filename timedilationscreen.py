@@ -1,0 +1,2 @@
+class TimeDilationScreen(Screen):
+    pass

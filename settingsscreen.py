@@ -1,0 +1,2 @@
+class SettingsScreen(Screen):
+    pass

@@ -1,0 +1,2 @@
+class RelativityScreen(Screen):
+    pass

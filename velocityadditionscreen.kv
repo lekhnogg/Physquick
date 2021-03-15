@@ -1,0 +1,95 @@
+
+
+<VelocityAdditionScreen>:
+
+    id: velocity_addition_screen
+    display: user_ux, user_upx, user_ve
+    orientation: 'vertical'
+    uPx: user_ux
+    vE: user_upx
+    uE: user_ve
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#69B3F2")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            font_color:
+                utils.get_color_from_hex("#424FFF")
+            font_size: 30
+            font_name: "Rubik-Bold.ttf"
+            text: "Velocity Addition"
+            size_hint: 1, .1
+            pos_hint: {"top": 1, "left": 1}
+
+        Label:
+            font_size: 17
+            text: "[b][u]V[/u][/b] (Velocity of Event as seen by observer on resting frame)"
+            markup: True
+            size_hint: .5, .1
+            pos_hint: {"top": .9, "right": .53}
+
+        FloatInput:
+            id: user_ux
+            size_hint: .3, .06
+            pos_hint: {"top": .87, "right": .95}
+            multiline: False
+            focus: True
+
+
+        Label:
+            font_size: 17
+            text:"[b][u]V'[/u][/b] (Velocity of Event relative to S' observer)"
+            markup: True
+            size_hint: .5, .1
+            pos_hint: {"top": .7, "right": .53}
+
+        FloatInput:
+            id: user_upx
+            size_hint: .3, .06
+            pos_hint: {"top": .67, "right": .95}
+            multiline: False
+            focus: True
+
+
+        Label:
+            font_size: 17
+            text: "[b][u]U[/u][/b] (Velocity of S' as seen by observer on resting frame)"
+            markup: True
+            size_hint: .5, .1
+            pos_hint: {"top": .5, "right": .53}
+
+        FloatInput:
+            id: user_ve
+            size_hint: .3, .06
+            pos_hint: {"top": .47, "right": .95}
+            multiline: False
+            focus: True
+
+
+
+        Button:
+            font_size: 18
+            pos: self.pos
+            size_hint: 1, .1
+            pos_hint: {"top": .2, "right": 1}
+            text: "[u]Evaluate[/u]"
+            markup: True
+            on_release:
+                velocity_addition_screen.get_velocity((user_ux.text), (user_upx.text), (user_ve.text))
+
+
+        Button:
+            color: 0,0,0,1
+            pos: self.pos
+            size_hint: 1, .1
+            text: "[u]Back[/u]"
+            markup: True
+            pos_hint: {"top": .1, "right": 1}
+            font_size: 18
+
+            on_release:
+                app.change_screen("relativity_screen", direction='left', mode='pop')

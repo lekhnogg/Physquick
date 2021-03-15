@@ -1,0 +1,92 @@
+<TimeDilationScreen>:
+    orientation: 'vertical'
+    tP: user_tP
+    tE: user_tE
+    uE: user_vE
+    id: time_dilation_screen
+    display: user_tE, user_vE, user_tP
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#69B3F2")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            font_color:
+                utils.get_color_from_hex("#424FFF")
+            font_size: 30
+            font_name: "Rubik-Bold.ttf"
+            text: "Time Dilation"
+            size_hint: 1, .1
+            pos_hint: {"top": 1, "left": 1}
+
+        Label:
+            font_size: 17
+            text: "[b][u]t[/u][/b] (Time measured on resting frame)"
+            markup: True
+            size_hint: .5, .1
+            pos_hint: {"top": .9, "right": .53}
+
+        FloatInput:
+            id: user_tE
+            size_hint: .3, .06
+            pos_hint: {"top": .87, "right": .95}
+            multiline: False
+            focus: True
+
+
+        Label:
+            font_size: 17
+            text:"[b][u]V[/u][/b] (Velocity of moving frame)"
+            markup: True
+            size_hint: .5, .1
+            pos_hint: {"top": .7, "right": .53}
+
+        FloatInput:
+            id: user_vE
+            size_hint: .3, .06
+            pos_hint: {"top": .67, "right": .95}
+            multiline: False
+            focus: True
+
+
+        Label:
+            font_size: 17
+            text: "[b][u]t'[/u][/b] (Dilated time)"
+            markup: True
+            size_hint: .5, .1
+            pos_hint: {"top": .5, "right": .53}
+
+        FloatInput:
+            id: user_tP
+            size_hint: .3, .06
+            pos_hint: {"top": .47, "right": .95}
+            multiline: False
+            focus: True
+
+
+
+        Button:
+            font_size: 18
+            pos: self.pos
+            size_hint: 1, .1
+            pos_hint: {"top": .2, "right": 1}
+            text: "[u]Evaluate[/u]"
+            markup: True
+            on_release:
+                time_dilation_screen.get_time((user_tE.text), (user_vE.text), (user_tP.text))
+
+
+        Button:
+            color: 0,0,0,1
+            pos: self.pos
+            size_hint: 1, .1
+            text: "[u]Back[/u]"
+            markup: True
+            pos_hint: {"top": .1, "right": 1}
+            font_size: 18
+
+            on_release:
+                app.change_screen("relativity_screen", direction='left', mode='pop')

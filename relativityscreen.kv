@@ -1,0 +1,80 @@
+
+
+<RelativityScreen>:
+
+    id: relativity_screen
+    orientation: 'vertical'
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#69B3F2")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        GridLayout:
+            rows:1
+            pos_hint: {"top":1,"left":1}
+            size_hint: 1,.1
+            Label:
+                font_color:
+                    utils.get_color_from_hex("#424FFF")
+                id: general_relativity_label
+                font_size: 30
+                font_name: "Rubik-Bold.ttf"
+                text: "General Relativity"
+                size_hint: 1, .1
+                pos_hint: {"top": 1, "left": 1}
+
+        GridLayout:
+            rows:1
+            pos_hint: {"top":.8,"left":1}
+            size_hint: 1,.1
+
+            ImageButton:
+                source: "Icons/warehouse-cart-packages.png"
+                on_release:
+                    app.change_screen("velocity_addition_screen", direction='right', mode='push')
+
+            ImageButton:
+                size_hint: 1, .1
+                source: "Icons/gauge-dashboard-1.png"
+                on_release:
+                    app.change_screen("time_dilation_screen", direction='right', mode='push')
+
+            ImageButton:
+                size_hint: 1, .1
+                source: "Icons/diet-waist-1.png"
+                on_release:
+                    app.change_screen("length_contraction_screen", direction='right', mode='push')
+
+
+        GridLayout:
+            rows:1
+            pos_hint: {"top":.7,"left":1}
+            size_hint: 1,.1
+            Label:
+                text: "Velocity Addition"
+                markup: True
+            Label:
+                text: "Time Dilation"
+                markup: True
+            Label:
+                text: "Length Contraction"
+                markup: True
+
+        GridLayout:
+            rows:1
+            pos_hint: {"top":.1,"left":1}
+            size_hint: 1,.1
+            Button:
+                color: 0,0,0,1
+                pos: self.pos
+                size_hint: 1, .1
+                text: "[u]Back[/u]"
+                markup: True
+                pos_hint: {"top": .1, "right": 1}
+                font_size: 20
+
+                on_release:
+                    app.change_screen("home_screen", direction='left', mode='pop')

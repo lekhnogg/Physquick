@@ -1,0 +1,2 @@
+class LengthContractionScreen(Screen):
+    pass
